@@ -1,0 +1,32 @@
+[
+  {
+    "date": "2022-09-15T12:07:41.142243+03:00",
+    "temperatureC": -7,
+    "temperatureF": 20,
+    "summary": "Hot"
+  },
+  {
+    "date": "2022-09-16T12:07:41.1460595+03:00",
+    "temperatureC": 44,
+    "temperatureF": 111,
+    "summary": "Bracing"
+  },
+  {
+    "date": "2022-09-17T12:07:41.146063+03:00",
+    "temperatureC": 25,
+    "temperatureF": 76,
+    "summary": "Mild"
+  },
+  {
+    "date": "2022-09-18T12:07:41.1460634+03:00",
+    "temperatureC": 25,
+    "temperatureF": 76,
+    "summary": "Freezing"
+  },
+  {
+    "date": "2022-09-19T12:07:41.1460638+03:00",
+    "temperatureC": 6,
+    "temperatureF": 42,
+    "summary": "Mild"
+  }
+]
