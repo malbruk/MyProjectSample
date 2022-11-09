@@ -29,12 +29,12 @@ namespace MyProject.Repositories.Repositories
 
         public List<Role> GetAll()
         {
-            return _context.Roles;
+            return _context.Roles.ToList();
         }
 
         public Role GetById(int id)
         {
-            return _context.Roles.Find(r => r.Id == id);
+            return _context.Roles.Find(id);
         }
 
         public Role Update(Role role)

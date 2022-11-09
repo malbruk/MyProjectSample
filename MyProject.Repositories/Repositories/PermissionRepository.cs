@@ -1,6 +1,7 @@
 ﻿using MyProject.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MyProject.Repositories.Repositories
@@ -26,12 +27,12 @@ namespace MyProject.Repositories.Repositories
 
         public List<Permission> GetAll()
         {
-            return _context.Permissions;
+            return _context.Permissions.ToList();
         }
 
         public Permission GetById(int id)
         {
-            return _context.Permissions.Find(p => p.Id == id);
+            return _context.Permissions.Find(id);
         }
 
         public Permission Update(Permission permission)

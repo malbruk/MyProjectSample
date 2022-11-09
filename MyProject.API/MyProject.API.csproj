@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyProject.Context\MyProject.Context.csproj" />
     <ProjectReference Include="..\MyProject.MockContext\MyProject.Mock.csproj" />
     <ProjectReference Include="..\MyProject.Repositories\MyProject.Repositories.csproj" />
     <ProjectReference Include="..\MyProject.Services\MyProject.Services.csproj" />
