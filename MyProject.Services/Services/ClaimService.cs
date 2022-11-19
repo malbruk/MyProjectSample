@@ -1,4 +1,4 @@
-﻿using MyProject.Common.Models;
+﻿using MyProject.Common.DTOs;
 using MyProject.Repositories.Interfaces;
 using MyProject.Services.Interfaces;
 using System;
@@ -19,7 +19,7 @@ namespace MyProject.Services.Services
             _claimRepository = claimRepository;
         }
         
-        public ClaimModel Add(int id, int roleId, int permissionId, PolicyType policyType)
+        public ClaimDTO Add(int id, int roleId, int permissionId, PolicyType policyType)
         {
             throw new NotImplementedException();
         }
@@ -29,17 +29,17 @@ namespace MyProject.Services.Services
             throw new NotImplementedException();
         }
 
-        public ClaimModel GetById(int id)
+        public ClaimDTO GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<ClaimModel> GetList()
+        public List<ClaimDTO> GetList()
         {
             throw new NotImplementedException();
         }
 
-        public ClaimModel Update(ClaimModel claim)
+        public ClaimDTO Update(ClaimDTO claim)
         {
             throw new NotImplementedException();
         }

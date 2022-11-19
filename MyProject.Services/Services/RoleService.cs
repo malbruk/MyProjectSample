@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyProject.Common.Models;
+using MyProject.Common.DTOs;
 using MyProject.Repositories;
 using MyProject.Repositories.Interfaces;
 using MyProject.Services.Interfaces;
@@ -22,31 +22,30 @@ namespace MyProject.Services.Services
             _mapper = mapper;
         }
 
-        public RoleModel GetById(int id)
+        public async Task<RoleDTO> GetByIdAsync(int id)
+        {
+            return _mapper.Map<RoleDTO>(await _roleRepository.GetByIdAsync(id));
+        }
+
+        public async Task<List<RoleDTO>> GetListAsync()
         {
             //לוגיקה עסקית
-            return _mapper.Map<RoleModel>(_roleRepository.GetById(id));
+            return _mapper.Map<List<RoleDTO>>(await _roleRepository.GetAllAsync());
         }
 
-        public List<RoleModel> GetList()
+        public async Task<RoleDTO> AddAsync(RoleDTO role)
         {
-            //לוגיקה עסקית
-            return _mapper.Map<List<RoleModel>>(_roleRepository.GetAll());
+            return _mapper.Map<RoleDTO>(await _roleRepository.AddAsync(role.Name, role.Title));
         }
 
-        public RoleModel Add(int id, string name, string title)
+        public async Task<RoleDTO> UpdateAsync(RoleDTO role)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<RoleDTO>(await _roleRepository.UpdateAsync(_mapper.Map<Role>(role)));
         }
 
-        public RoleModel Update(RoleModel role)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
+            await _roleRepository.DeleteAsync(id);
         }
     }
 }

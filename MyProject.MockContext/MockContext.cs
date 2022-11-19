@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MyProject.Mock
 {
-    public class MockContext : IContext
+    public class MockContext //: IContext
     {
         public DbSet<Role> Roles { get; set; }
 

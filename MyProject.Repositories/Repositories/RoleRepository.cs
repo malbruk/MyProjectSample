@@ -1,8 +1,10 @@
-﻿using MyProject.Repositories.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using MyProject.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyProject.Repositories.Repositories
 {
@@ -15,34 +17,36 @@ namespace MyProject.Repositories.Repositories
             _context = context;
         }
 
-        public Role Add(int id, string name, string description)
+        public async Task<Role> AddAsync(string name, string description)
         {
-            var newRole = new Role { Id = id, Name = name, Description = description };
-            _context.Roles.Add(newRole);
+            var newRole = new Role { Name = name, Description = description };
+            await _context.Roles.AddAsync(newRole);
+            await _context.SaveChangesAsync();
             return newRole;
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var role = await GetByIdAsync(id);
+            _context.Roles.Remove(role);
+            await _context.SaveChangesAsync();
         }
 
-        public List<Role> GetAll()
+        public async Task<List<Role>> GetAllAsync()
         {
-            return _context.Roles.ToList();
+            return await _context.Roles.ToListAsync();
         }
 
-        public Role GetById(int id)
+        public async Task<Role> GetByIdAsync(int id)
         {
-            return _context.Roles.Find(id);
+            return await _context.Roles.FindAsync(id);
         }
 
-        public Role Update(Role role)
+        public async Task<Role> UpdateAsync(Role role)
         {
-            var existRole = GetById(role.Id);
-            existRole.Name = role.Name;
-            existRole.Description = role.Description;
-            return existRole;
-        }
-    }
+            var updatedRole = _context.Roles.Update(role);
+            await _context.SaveChangesAsync();
+            return updatedRole.Entity;
+        }                    
+    }                        
 }

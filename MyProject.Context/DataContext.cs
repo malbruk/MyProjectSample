@@ -9,19 +9,17 @@ namespace MyProject.Context
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Claim> Claims { get; set; }
 
-        public string DbPath { get; }
-        
-        public DataContext()
-        {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "myprojectsample.db");
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(
     "Server=(localdb)\\mssqllocaldb;Database=MyProjectDB;Trusted_Connection=True;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Role>()
+                .Property(b => b.Name)
+                .IsRequired();
         }
     }
 }

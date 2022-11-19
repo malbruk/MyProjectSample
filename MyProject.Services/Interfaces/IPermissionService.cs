@@ -1,4 +1,4 @@
-﻿using MyProject.Common.Models;
+﻿using MyProject.Common.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,13 @@ namespace MyProject.Services.Interfaces
 {
     public interface IPermissionService
     {
-        List<PermissionModel> GetList();
+        List<PermissionDTO> GetList();
 
-        PermissionModel GetById(int id);
+        PermissionDTO GetById(int id);
 
-        PermissionModel Add(int id, string name, string title);
+        PermissionDTO Add(int id, string name, string title);
 
-        PermissionModel Update(PermissionModel permission);
+        PermissionDTO Update(PermissionDTO permission);
 
         void Delete(int id);
     }

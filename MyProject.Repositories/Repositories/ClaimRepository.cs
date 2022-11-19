@@ -17,7 +17,7 @@ namespace MyProject.Repositories.Repositories
 
         public Claim Add(int id, int roleId, int permissionId, EPolicy policy)
         {
-            var added = _context.Claims.Add(new Claim { Id = id, RoleId = roleId, PermissionId = permissionId, Policy = policy });
+            var added = _context.Claims.Add(new Claim { Id = id, /*RoleId = roleId, PermissionId = permissionId, */Policy = policy });
             _context.SaveChanges();
             return added.Entity;
         }

@@ -1,4 +1,4 @@
-﻿using MyProject.Common.Models;
+﻿using MyProject.Common.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +9,14 @@ namespace MyProject.Services.Interfaces
 {
     public interface IRoleService
     {
-        List<RoleModel> GetList();
+        Task<List<RoleDTO>> GetListAsync();
 
-        RoleModel GetById(int id);
+        Task<RoleDTO> GetByIdAsync(int id);
 
-        RoleModel Add(int id, string name, string title);
+        Task<RoleDTO> AddAsync(RoleDTO role);
 
-        RoleModel Update(RoleModel role);
+        Task<RoleDTO> UpdateAsync(RoleDTO role);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

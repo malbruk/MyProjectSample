@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MyProject.Repositories
 {
@@ -15,5 +16,7 @@ namespace MyProject.Repositories
         DbSet<Claim> Claims { get; set; }
 
         int SaveChanges();
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

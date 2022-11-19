@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyProject.Common.Models
+namespace MyProject.Common.DTOs
 {
     public enum PolicyType { Allow, Deny}
     
-    public class ClaimModel
+    public class ClaimDTO
     {
         public int Id { get; set; }
 

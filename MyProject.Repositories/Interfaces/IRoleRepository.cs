@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyProject.Repositories.Interfaces
 {
     public interface IRoleRepository
     {
-        List<Role> GetAll();
+        Task<List<Role>> GetAllAsync();
 
-        Role GetById(int id);
-
-        Role Add(int id, string name, string description);
-
-        Role Update(Role role);
-
-        void Delete(int id);
+        Task<Role> GetByIdAsync(int id);
+        
+        Task<Role> AddAsync(string name, string description);
+        
+        Task<Role> UpdateAsync(Role role);
+        
+        Task DeleteAsync(int id);
     }
 }

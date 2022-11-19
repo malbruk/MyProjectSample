@@ -19,7 +19,7 @@ namespace MyProject.Services
             services.AddScoped<IClaimService, ClaimService>();
             
             services.AddAutoMapper(typeof(MappingProfile));
-
+            
             return services;
         }
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyProject.Common.Models
+namespace MyProject.Common.DTOs
 {
-    public class RoleModel
+    public class PermissionDTO
     {
         public int Id { get; set; }
 

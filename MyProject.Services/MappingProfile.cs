@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyProject.Common.Models;
+using MyProject.Common.DTOs;
 using MyProject.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace MyProject.Services
     {
         public MappingProfile()
         {
-            CreateMap<RoleModel, Role>().ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title)).ReverseMap();
+            CreateMap<RoleDTO, Role>().ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title)).ReverseMap();
         }
     }
 }

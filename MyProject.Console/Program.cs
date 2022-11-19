@@ -2,6 +2,7 @@
 using MyProject.Repositories;
 using MyProject.Repositories.Repositories;
 using System;
+using System.Linq;
 
 namespace MyProject.ConsoleApp
 {
@@ -21,13 +22,24 @@ namespace MyProject.ConsoleApp
 
             Console.WriteLine("=========================");
 
-            var role =  roleRepository.Add(3, "secretary", "all office access");
+            var role = roleRepository.Add(3, "secretary", "all office access");
             roleRepository.GetAll().ForEach(r => Console.WriteLine(r.ToString()));
 
 
             var role1 = roleRepository.GetById(1);
             role1.Name = "Administrator";
             roleRepository.Update(role1);
+
+
+            int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+
+            var numQuery = numbers.Where(num => (num % 2) == 0);
+
+            var numQuery2 =
+                                    from num in numbers
+                                    where (num % 2) == 0
+                                    select num;
+
         }
     }
 }

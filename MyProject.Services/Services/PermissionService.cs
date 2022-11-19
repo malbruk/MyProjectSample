@@ -1,4 +1,4 @@
-﻿using MyProject.Common.Models;
+﻿using MyProject.Common.DTOs;
 using MyProject.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace MyProject.Services.Services
 {
     public class PermissionService : IPermissionService
     {
-        public PermissionModel Add(int id, string name, string title)
+        public PermissionDTO Add(int id, string name, string title)
         {
             throw new NotImplementedException();
         }
@@ -20,17 +20,17 @@ namespace MyProject.Services.Services
             throw new NotImplementedException();
         }
 
-        public PermissionModel GetById(int id)
+        public PermissionDTO GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<PermissionModel> GetList()
+        public List<PermissionDTO> GetList()
         {
             throw new NotImplementedException();
         }
 
-        public PermissionModel Update(PermissionModel permission)
+        public PermissionDTO Update(PermissionDTO permission)
         {
             throw new NotImplementedException();
         }

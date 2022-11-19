@@ -1,4 +1,4 @@
-﻿using MyProject.Common.Models;
+﻿using MyProject.Common.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,13 @@ namespace MyProject.Services.Interfaces
 {
     public interface IClaimService
     {
-        List<ClaimModel> GetList();
+        List<ClaimDTO> GetList();
 
-        ClaimModel GetById(int id);
+        ClaimDTO GetById(int id);
 
-        ClaimModel Add(int id, int roleId, int permissionId, PolicyType policyType);
+        ClaimDTO Add(int id, int roleId, int permissionId, PolicyType policyType);
 
-        ClaimModel Update(ClaimModel claim);
+        ClaimDTO Update(ClaimDTO claim);
         
         void Delete(int id);
     }
