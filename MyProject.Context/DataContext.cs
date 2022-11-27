@@ -9,10 +9,15 @@ namespace MyProject.Context
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Claim> Claims { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //    {
+        //        options.UseSqlServer(
+        //"Server=(localdb)\\mssqllocaldb;Database=MyProjectDB;Trusted_Connection=True;");
+        //    }
+
+        public DataContext(DbContextOptions<DataContext> options)
+        : base(options)
         {
-            options.UseSqlServer(
-    "Server=(localdb)\\mssqllocaldb;Database=MyProjectDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

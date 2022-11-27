@@ -87,26 +87,16 @@ namespace MyProject.Context.Migrations
             modelBuilder.Entity("MyProject.Repositories.Claim", b =>
                 {
                     b.HasOne("MyProject.Repositories.Permission", "Permission")
-                        .WithMany("Claims")
+                        .WithMany()
                         .HasForeignKey("PermissionId");
 
                     b.HasOne("MyProject.Repositories.Role", "Role")
-                        .WithMany("Claims")
+                        .WithMany()
                         .HasForeignKey("RoleId");
 
                     b.Navigation("Permission");
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("MyProject.Repositories.Permission", b =>
-                {
-                    b.Navigation("Claims");
-                });
-
-            modelBuilder.Entity("MyProject.Repositories.Role", b =>
-                {
-                    b.Navigation("Claims");
                 });
 #pragma warning restore 612, 618
         }
