@@ -91,15 +91,15 @@ app.UseAuthorization();
 
 //app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/auth"), appBuilder => HandleAuth(appBuilder));
 
-app.Use(async (context, next) =>
-{
-    var requestSeq = Guid.NewGuid().ToString();
-    app.Logger.LogInformation($"Request Starts {requestSeq}");
-    context.Items.Add("RequestSeqence", requestSeq);
-    await next(context);
-    //await next.Invoke();
-    app.Logger.LogInformation($"Request ends {requestSeq}");
-});
+//app.Use(async (context, next) =>
+//{
+//    var requestSeq = Guid.NewGuid().ToString();
+//    app.Logger.LogInformation($"Request Starts {requestSeq}");
+//    context.Items.Add("RequestSeqence", requestSeq);
+//    await next(context);
+//    //await next.Invoke();
+//    app.Logger.LogInformation($"Request ends {requestSeq}");
+//});
 app.UseTrack();
 //app.UseAuth();
 
