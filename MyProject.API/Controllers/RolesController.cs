@@ -5,6 +5,7 @@ using MyProject.Repositories;
 using MyProject.Repositories.Interfaces;
 using MyProject.Services.Interfaces;
 using MyProject.API.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,7 +13,7 @@ namespace MyProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Auth]
+    [Authorize]
     public class RolesController : ControllerBase
     {
         private readonly IRoleService _roleService;
