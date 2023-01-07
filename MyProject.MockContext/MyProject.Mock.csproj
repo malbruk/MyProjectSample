@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Moq.EntityFrameworkCore" Version="7.0.0.2" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyProject.Repositories\MyProject.Repositories.csproj" />
   </ItemGroup>
 

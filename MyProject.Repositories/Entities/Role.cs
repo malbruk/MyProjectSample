@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MyProject.Repositories
+namespace MyProject.Repositories.Entities
 {
     public class Role
     {
@@ -11,6 +11,7 @@ namespace MyProject.Repositories
 
         public string Description { get; set; }
 
+        public virtual ICollection<User> Users { get; set; }
 
         public override string ToString()
         {

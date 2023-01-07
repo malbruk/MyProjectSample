@@ -4,13 +4,13 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyProject.API.Middlewares;
 using MyProject.Context;
+using MyProject.Mock;
 using MyProject.Repositories;
 using MyProject.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
+        
 // Add services to the container.
 
 builder.Services.AddCors(opt => opt.AddPolicy("PolicyName", policy =>
@@ -51,7 +51,8 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddServices();
 //builder.Services.AddSingleton<IContext, MockContext>();
 //builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer("name=ConnectionStrings:MyProjectDB"));
-builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MyProjectDB;Trusted_Connection=True;"));
+Console.WriteLine(builder.Configuration["ConnectionStrings:AWS_DB"]);
+builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer(builder.Configuration["ConnectionStrings:AWS_DB"]));
 
 builder.Services.AddAuthentication(options =>
 {

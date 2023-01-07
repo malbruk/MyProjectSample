@@ -22,7 +22,7 @@ namespace MyProject.Context.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MyProject.Repositories.Claim", b =>
+            modelBuilder.Entity("MyProject.Repositories.Entities.Claim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace MyProject.Context.Migrations
                     b.ToTable("Claims");
                 });
 
-            modelBuilder.Entity("MyProject.Repositories.Permission", b =>
+            modelBuilder.Entity("MyProject.Repositories.Entities.Permission", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace MyProject.Context.Migrations
                     b.ToTable("Permissions");
                 });
 
-            modelBuilder.Entity("MyProject.Repositories.Role", b =>
+            modelBuilder.Entity("MyProject.Repositories.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,19 +84,68 @@ namespace MyProject.Context.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("MyProject.Repositories.Claim", b =>
+            modelBuilder.Entity("MyProject.Repositories.Entities.User", b =>
                 {
-                    b.HasOne("MyProject.Repositories.Permission", "Permission")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<int>("RolesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RolesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("RoleUser");
+                });
+
+            modelBuilder.Entity("MyProject.Repositories.Entities.Claim", b =>
+                {
+                    b.HasOne("MyProject.Repositories.Entities.Permission", "Permission")
                         .WithMany()
                         .HasForeignKey("PermissionId");
 
-                    b.HasOne("MyProject.Repositories.Role", "Role")
+                    b.HasOne("MyProject.Repositories.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId");
 
                     b.Navigation("Permission");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.HasOne("MyProject.Repositories.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyProject.Repositories.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

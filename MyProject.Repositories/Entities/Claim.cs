@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyProject.Repositories
+namespace MyProject.Repositories.Entities
 {
     public enum EPolicy { Allow, Deny, Mandatory}
 

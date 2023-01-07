@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyProject.Common.DTOs;
 using MyProject.Repositories;
+using MyProject.Repositories.Entities;
 using MyProject.Repositories.Interfaces;
 using MyProject.Services.Interfaces;
 using System;

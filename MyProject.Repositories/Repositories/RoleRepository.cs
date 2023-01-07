@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyProject.Repositories.Entities;
 using MyProject.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace MyProject.Repositories.Repositories
         public async Task<Role> AddAsync(string name, string description)
         {
             var newRole = new Role { Name = name, Description = description };
-            await _context.Roles.AddAsync(newRole);
+            _context.Roles.Add(newRole);
             await _context.SaveChangesAsync();
             return newRole;
         }

@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyProject.Repositories;
+using MyProject.Repositories.Entities;
 
 namespace MyProject.Context
 {
     public class DataContext : DbContext, IContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Claim> Claims { get; set; }

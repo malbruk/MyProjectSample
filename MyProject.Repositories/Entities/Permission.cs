@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyProject.Repositories
+namespace MyProject.Repositories.Entities
 {
     public class Permission
     {

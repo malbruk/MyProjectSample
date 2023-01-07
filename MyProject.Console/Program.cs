@@ -10,6 +10,8 @@ namespace MyProject.ConsoleApp
     {
         static void Main(string[] args)
         {
+
+            var mock = new MockContext();
             //    Console.ForegroundColor = ConsoleColor.Cyan;
 
             //    //create instance of MockContext
