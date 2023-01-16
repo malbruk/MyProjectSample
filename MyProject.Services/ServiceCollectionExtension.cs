@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyProject.Repositories;
+using MyProject.Services.CachedServices;
+
 namespace MyProject.Services
 {
     public static class ServiceCollectionExtension
@@ -15,11 +17,13 @@ namespace MyProject.Services
         {
             services.AddRepositories();
             services.AddScoped<IRoleService, RoleService>();
+            services.Decorate<IRoleService, CachedRoleService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IClaimService, ClaimService>();
             
             services.AddAutoMapper(typeof(MappingProfile));
-            
+            services.AddMemoryCache();
+
             return services;
         }
     }

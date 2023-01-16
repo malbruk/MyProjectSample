@@ -50,9 +50,9 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddServices();
 //builder.Services.AddSingleton<IContext, MockContext>();
-//builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer("name=ConnectionStrings:MyProjectDB"));
-Console.WriteLine(builder.Configuration["ConnectionStrings:AWS_DB"]);
-builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer(builder.Configuration["ConnectionStrings:AWS_DB"]));
+builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer("name=ConnectionStrings:MyProjectDB"));
+//Console.WriteLine(builder.Configuration["ConnectionStrings:AWS_DB"]);
+//builder.Services.AddDbContext<IContext, DataContext>(options => options.UseSqlServer(builder.Configuration["ConnectionStrings:AWS_DB"]));
 
 builder.Services.AddAuthentication(options =>
 {
@@ -107,6 +107,7 @@ app.UseTrack();
 app.MapControllers();
 
 app.Logger.LogInformation("Run App");
+
 app.Run();
 
 
