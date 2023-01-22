@@ -6,6 +6,7 @@ using MyProject.Repositories.Interfaces;
 using MyProject.Services.Interfaces;
 using MyProject.API.Filters;
 using Microsoft.AspNetCore.Authorization;
+using Grpc.Net.Client;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,7 +14,7 @@ namespace MyProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class RolesController : ControllerBase
     {
         private readonly IRoleService _roleService;
@@ -27,6 +28,12 @@ namespace MyProject.API.Controllers
         [HttpGet]
         public async Task<List<RoleDTO>> Get()
         {
+            using var channel = GrpcChannel.ForAddress("https://localhost:7002");
+            var client = new Greeter.GreeterClient(channel);
+            var reply = await client.SayHelloAsync(
+                              new HelloRequest { Name = "GreeterClient" });
+
+            //new AuthorizationRequest { UserId = 1, Permission = "VIEW_ALL_STUDENTS" });
             return await _roleService.GetListAsync();
         }
 

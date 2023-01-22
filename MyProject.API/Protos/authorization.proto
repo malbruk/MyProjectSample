@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "MyProject.API";
+
+service Authorization{
+	rpc CheckAccess (AuthorizationRequest) returns (AuthorizationResponse);
+}
+
+message AuthorizationRequest{
+	int32 user_id = 1;	
+	string permission = 2;
+}
+
+message AuthorizationResponse{
+	bool allow = 1;
+}
